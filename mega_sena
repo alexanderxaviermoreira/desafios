@@ -1,0 +1,31 @@
+from random import randint
+from time import sleep
+
+
+
+palpites = []
+sorteio = []
+
+print()
+print('-~'*20)
+print('{:^40}'.format('SORTEIO DA MEGA SENA'))
+print('-~'*20)
+
+
+jogos = int(input('\nNúmero de jogos: '))
+print('{:#^15}'.format(f'Serão gerados {jogos} jogos, com 6 números cada.'))
+sleep(3)
+print()
+while len(palpites) < jogos:
+    n = randint(1, 60)
+    if n not in sorteio:
+        sorteio.append(n)
+        if len(sorteio) == 6:
+            palpites.append(sorted(sorteio[:]))
+            sorteio.sort()
+            sorteio.clear()
+for e, j in enumerate(palpites):
+    sleep(.15)
+    print(f'Jogo nr {e+1}: {j}')
+
+print()
